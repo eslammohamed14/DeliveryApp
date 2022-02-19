@@ -53,7 +53,7 @@ const OnBoarding = ({ navigation }) => {
   };
 
   const Dots = () => {
-    //// mesh fahemha ////
+    //// divide scrollX by Width to return page number ////
 
     const dotPostion = Animated.divide(scrollX, SIZES.width);
 

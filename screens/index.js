@@ -7,6 +7,7 @@ import SignIn from "./Authentication/SignIn";
 import SignUp from "./Authentication/SignUp";
 import Otp from "./Authentication/Otp";
 import ForgotPassword from "./Authentication/ForgotPassword";
+import AuthLayout from "./Authentication/AuthLayout";
 
 // Home
 import Home from "./Home/Home";
@@ -24,6 +25,22 @@ import Favourite from "./Favourite/Favourite";
 // Notification
 import Notification from "./Notification/Notification";
 
+// Food
+import FoodDetail from "./Food/FoodDetail";
+
+// Cart
+import Checkout from "./Cart/Checkout";
+import MyCart from "./Cart/MyCart";
+import Success from "./Cart/Success";
+
+// Card
+import AddCard from "./Card/AddCard";
+import MyCard from "./Card/MyCard";
+
+// Delivery
+import DeliveryStatus from "./Delivery/DeliveryStatus";
+import Map from "./Delivery/Map";
+
 export {
   MainLayout,
   OnBoarding,
@@ -31,10 +48,19 @@ export {
   SignUp,
   Otp,
   ForgotPassword,
+  AuthLayout,
   Home,
   Search,
   CartTab,
   Favourite,
   Notification,
   FilterModal,
+  FoodDetail,
+  Checkout,
+  MyCart,
+  Success,
+  AddCard,
+  MyCard,
+  DeliveryStatus,
+  Map,
 };

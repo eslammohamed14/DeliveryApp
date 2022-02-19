@@ -17,6 +17,7 @@ const TextIconButton = ({
   onPress,
   icon,
   iconStyle,
+  iconPosition,
 }) => {
   return (
     <TouchableOpacity
@@ -28,6 +29,18 @@ const TextIconButton = ({
       }}
       onPress={onPress}
     >
+      {iconPosition == "Left" && (
+        <Image
+          source={icon}
+          style={{
+            ...iconStyle,
+            width: 20,
+            height: 20,
+            marginRight: 10,
+          }}
+        />
+      )}
+
       <Text
         style={{
           ...labelStyle,
@@ -37,15 +50,17 @@ const TextIconButton = ({
       >
         {label}
       </Text>
-      <Image
-        source={icon}
-        style={{
-          ...iconStyle,
-          width: 20,
-          height: 20,
-          marginLeft: 10,
-        }}
-      />
+      {iconPosition == "Right" && (
+        <Image
+          source={icon}
+          style={{
+            ...iconStyle,
+            width: 20,
+            height: 20,
+            marginLeft: 10,
+          }}
+        />
+      )}
     </TouchableOpacity>
   );
 };

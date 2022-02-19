@@ -10,7 +10,13 @@ import {
   dummyData,
 } from "../constants";
 
-const TextButton = ({ label, labelStyle, buttonContainerStyle, onPress }) => {
+const TextButton = ({
+  label,
+  labelStyle,
+  buttonContainerStyle,
+  onPress,
+  disabled,
+}) => {
   return (
     <TouchableOpacity
       style={{
@@ -19,6 +25,7 @@ const TextButton = ({ label, labelStyle, buttonContainerStyle, onPress }) => {
         justifyContent: "center",
         //backgroundColor: COLORS.primary,
       }}
+      disabled={disabled}
       onPress={onPress}
     >
       <Text
