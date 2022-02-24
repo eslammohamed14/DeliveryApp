@@ -11,7 +11,7 @@ import {
   dummyData,
 } from "../constants";
 
-const VerticalFoodCard = ({ containerStyle, item }) => {
+const VerticalFoodCard = ({ containerStyle, item, onPress }) => {
   return (
     <TouchableOpacity
       style={{
@@ -21,6 +21,7 @@ const VerticalFoodCard = ({ containerStyle, item }) => {
         alignItems: "center",
         ...containerStyle,
       }}
+      onPress={onPress}
     >
       {/* colories and favourite */}
       <View style={{ flexDirection: "row" }}>

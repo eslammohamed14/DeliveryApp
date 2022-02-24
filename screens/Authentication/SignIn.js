@@ -9,6 +9,7 @@ import {
   images,
   constants,
   FONTS,
+  LocalStorage,
 } from "../../constants";
 
 import {
@@ -18,9 +19,11 @@ import {
   TextIconButton,
 } from "../../component";
 import { utils } from "../../utils";
-import { NavigationContainer } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
-const SignIn = ({ navigation }) => {
+const SignIn = ({}) => {
+  const navigation = useNavigation();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -30,6 +33,10 @@ const SignIn = ({ navigation }) => {
 
   const isEnableSignIn = () => {
     return email != "" && password != "" && emailError == "";
+  };
+
+  const storeToken = (value) => {
+    return LocalStorage.storeData("Token", value);
   };
 
   return (
@@ -159,8 +166,11 @@ const SignIn = ({ navigation }) => {
                 height: 60,
                 borderRadius: SIZES.radius,
               }}
-              /* onPress={() => {
-            }} */
+              onPress={() => {
+                storeToken(email);
+                // props.refresh();
+                navigation.navigate("MainLayout");
+              }}
             />
           </View>
 

@@ -177,6 +177,23 @@ const allCards = [
   },
 ];
 
+const stars = [
+  {
+    id: 1,
+  },
+  {
+    id: 2,
+  },
+  {
+    id: 3,
+  },
+  {
+    id: 4,
+  },
+  {
+    id: 5,
+  },
+];
 const fromLocs = [
   {
     latitude: 1.5347282806345879,
@@ -215,4 +232,5 @@ export default {
   myCards,
   allCards,
   fromLocs,
+  stars,
 };

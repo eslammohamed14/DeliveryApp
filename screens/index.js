@@ -1,5 +1,4 @@
 import MainLayout from "./MainLayout";
-
 import OnBoarding from "./OnBoarding/OnBoarding";
 
 // Authentication

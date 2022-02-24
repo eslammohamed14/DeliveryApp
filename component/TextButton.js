@@ -11,9 +11,11 @@ import {
 } from "../constants";
 
 const TextButton = ({
+  buttonContainerStyle,
   label,
   labelStyle,
-  buttonContainerStyle,
+  label2 = "",
+  label2Style,
   onPress,
   disabled,
 }) => {
@@ -23,6 +25,7 @@ const TextButton = ({
         ...buttonContainerStyle,
         alignItems: "center",
         justifyContent: "center",
+        flexDirection: "row",
         //backgroundColor: COLORS.primary,
       }}
       disabled={disabled}
@@ -37,6 +40,19 @@ const TextButton = ({
       >
         {label}
       </Text>
+      {label2 != "" && (
+        <Text
+          style={{
+            flex: 1,
+            textAlign: "right",
+            ...label2Style,
+            ...FONTS.h3,
+            //color: COLORS.white,
+          }}
+        >
+          {label2}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };

@@ -18,6 +18,7 @@ import {
 } from "../../constants";
 import { HorizontalFoodCard, VerticalFoodCard } from "../../component";
 import { FilterModal } from "../";
+import { useNavigation } from "@react-navigation/native";
 
 const Section = ({ title, onPress, children }) => {
   return (
@@ -57,7 +58,9 @@ const Section = ({ title, onPress, children }) => {
   );
 };
 
-const Home = () => {
+const Home = ({}) => {
+  const navigation = useNavigation();
+
   const [selectedCategoryId, setSelectedCategoryId] = useState(1);
   const [selectedMenuType, setSelectedMenuType] = useState(1);
   const [menuList, setMenuList] = useState([]);
@@ -252,6 +255,10 @@ const Home = () => {
                   alignItems: "center",
                 }}
                 item={item}
+                onPress={() => {
+                  console.log(navigation, ".........");
+                  navigation?.navigate("FoodDetail");
+                }}
               />
             );
           }}

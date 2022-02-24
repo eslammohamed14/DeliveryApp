@@ -187,7 +187,6 @@ const OnBoarding = ({ navigation }) => {
       }}
     >
       {renderHeaderLogo()}
-
       <Animated.FlatList
         ref={flatListRef}
         horizontal

@@ -6,7 +6,21 @@ import {
   createDrawerNavigator,
   DrawerContentScrollView,
 } from "@react-navigation/drawer";
-import { MainLayout } from "../screens";
+import { createStackNavigator } from "@react-navigation/stack";
+
+import {
+  MainLayout,
+  Home,
+  FoodDetail,
+  Checkout,
+  MyCart,
+  Success,
+  AddCard,
+  MyCard,
+  DeliveryStatus,
+  Map,
+  SignIn,
+} from "../screens";
 import {
   COLORS,
   FONTS,
@@ -14,11 +28,37 @@ import {
   constants,
   icons,
   dummyData,
+  LocalStorage,
 } from "../constants";
 import { connect } from "react-redux";
 import { setSelectedTab } from "../stores/tabs/tabActions";
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
+
+const Screens = ({ drawerAnimationStyle }) => {
+  return (
+    <Animated.View
+      style={[{ flex: 1, overflow: "hidden" }, drawerAnimationStyle]}
+    >
+      <Stack.Navigator
+        screenOptions={{ headerTitle: null, headerShown: false }}
+      >
+        <Stack.Screen name="MainLayout" component={MainLayout} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="FoodDetail" component={FoodDetail} />
+        <Stack.Screen name="Checkout" component={Checkout} />
+        <Stack.Screen name="MyCart" component={MyCart} />
+        <Stack.Screen name="Success" component={Success} />
+        <Stack.Screen name="AddCard" component={AddCard} />
+        <Stack.Screen name="MyCard" component={MyCard} />
+        <Stack.Screen name="DeliveryStatus" component={DeliveryStatus} />
+        <Stack.Screen name="Map" component={Map} />
+        <Stack.Screen name="SignIn" component={SignIn} />
+      </Stack.Navigator>
+    </Animated.View>
+  );
+};
 
 const CusomDrawerItem = ({ label, icon, onPress, isFocused }) => {
   return (
@@ -199,13 +239,20 @@ const CusomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
             marginBottom: SIZES.padding,
           }}
         >
-          <CusomDrawerItem label={"Logout"} icon={icons.logout} />
+          <CusomDrawerItem
+            label={"Logout"}
+            icon={icons.logout}
+            onPress={() => {
+              navigation.navigate("SignIn");
+              LocalStorage.clearStorage();
+            }}
+          />
         </View>
       </View>
     </DrawerContentScrollView>
   );
 };
-const CusomDrawer = ({ selectedTab, setSelectedTab }) => {
+const CustomDrawer = ({ selectedTab, setSelectedTab }) => {
   const [progress, setProgress] = useState(new Animated.Value(0));
 
   const scale = Animated.interpolateNode(progress, {
@@ -252,9 +299,9 @@ const CusomDrawer = ({ selectedTab, setSelectedTab }) => {
           );
         }}
       >
-        <Drawer.Screen name="MainLayout">
+        <Drawer.Screen name="Screens">
           {(props) => (
-            <MainLayout {...props} drawerAnimationStyle={animatedStyle} />
+            <Screens {...props} drawerAnimationStyle={animatedStyle} />
           )}
         </Drawer.Screen>
       </Drawer.Navigator>
@@ -273,4 +320,4 @@ function mapDispatchToProps(dispatch) {
     },
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(CusomDrawer);
+export default connect(mapStateToProps, mapDispatchToProps)(CustomDrawer);
