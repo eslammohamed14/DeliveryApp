@@ -21,8 +21,11 @@ import {
   Rating,
   StepperInput,
 } from "../../component";
+import { useNavigation } from "@react-navigation/native";
 
 const FoodDetail = () => {
+  const navigation = useNavigation();
+
   const [foodItem, setFoodItem] = useState(dummyData.vegBiryani);
   const [selectedSize, setSelectedSize] = useState(0);
   const [qty, setQty] = useState(1);
@@ -337,6 +340,11 @@ const FoodDetail = () => {
       >
         {/* stepperInput */}
         <StepperInput
+          containerStyle={{
+            backgroundColor: COLORS.lightGray2,
+            height: 60,
+            width: 130,
+          }}
           value={qty}
           onAdd={() => setQty(qty + 1)}
           onMinus={() => {
@@ -365,6 +373,7 @@ const FoodDetail = () => {
           label2Style={{
             color: COLORS.white,
           }}
+          onPress={() => navigation.navigate("MyCart")}
         />
       </View>
     );

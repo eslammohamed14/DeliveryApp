@@ -9,10 +9,10 @@ const StepperInput = ({ containerStyle, value = 1, onAdd, onMinus }) => {
     <View
       style={{
         ...containerStyle,
-        height: 60,
-        width: 130,
+        /* height: 60,
+        width: 130, */
         borderRadius: SIZES.radius,
-        backgroundColor: COLORS.lightGray2,
+        //backgroundColor: COLORS.lightGray2,
         flexDirection: "row",
         alignItems: "center",
       }}
